@@ -32,6 +32,7 @@
         }
         else{
             document.getElementById('modal-close').click();
+           
 
             let res= await axios.post('/categoryCreate',{
                 name:categoryName
@@ -39,11 +40,16 @@
 
             if(res.status===201){
                 alert("New Category Creates!")
+                document.getElementById('save-form').reset();
                 await getList();
             }
             else{
                 alert("Error!")
             }
         }
+    })
+    document.getElementById("modal-close").addEventListener('click',async function(){
+        document.getElementById('modal-close').click();
+        document.getElementById('save-form').reset();
     })
 </script>

@@ -46,12 +46,25 @@ async function getList(){
                     <td>${index+1}</td>
                     <td>${item['name']}</td>
                     <td>
-                        <button class="btn btn-sm btn-outline-success">Edit</button>
-                        <button class="btn btn-sm btn-outline-danger">Delete</button>
+                        <button data-id="${item['id']}" class="btn editBtn btn-sm btn-outline-success">Edit</button>
+                        <button data-id="${item['id']}" class="btn deleteBtn btn-sm btn-outline-danger">Delete</button>
                     </td>
                 </tr>`
 
         tableList.append(row)
+    })
+
+    $('.editBtn').on('click',async function(){
+      let id= $(this).data('id');
+      await FillUpUpdateForm(id);
+      $('#update-modal').modal('show');
+     
+    })
+
+    $('.deleteBtn').on('click',function(){
+        let id= $(this).data('id');
+        $('#delete-modal').modal('show');
+        $('#deleteID').val(id);
     })
 
     tableData.DataTable({
