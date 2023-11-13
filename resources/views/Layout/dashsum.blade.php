@@ -32,6 +32,9 @@
                             <a class="nav-link" href="{{url('/Categorypage')}}">Category</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{url('/Customer')}}">Customer</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#">Products</a>
                         </li>
                         <li class="nav-item">

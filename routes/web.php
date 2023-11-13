@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\categoryController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\dashController;
 use App\Http\Controllers\userController;
+use App\Http\Controllers\categoryController;
+use App\Http\Controllers\customerController;
 use App\Http\Middleware\tokenVerificationMiddleware;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,13 @@ Route::post('/categoryDelete',[categoryController::class,'CategoryDelete'])->mid
 Route::post('/categoryById',[categoryController::class,'CategoryById'])->middleware(tokenVerificationMiddleware::class);    
 
 
+//Customer back-end routes::
+Route::get('/customerList',[customerController::class,'CustomerList'])->middleware(tokenVerificationMiddleware::class);
+Route::post('/customerCreate',[customerController::class,'CreateCustomer'])->middleware(tokenVerificationMiddleware::class);
+Route::post('/customerUpdate',[customerController::class,'UpdateCustomer'])->middleware(tokenVerificationMiddleware::class);
+Route::post('/customerDelete',[customerController::class,'DeleteCustomer'])->middleware(tokenVerificationMiddleware::class);
+Route::post('customerById',[customerController::class,'CustomerById'])->middleware(tokenVerificationMiddleware::class);
+
 
 
 
@@ -62,3 +70,8 @@ Route::get('/Userprofile',[dashController::class,'profilePage'])->middleware([to
 //Category front-end routes::
 
 Route::get('/Categorypage',[categoryController::class,'CategoryPage'])->middleware(tokenVerificationMiddleware::class);
+
+
+//Customer front-end routes::
+
+Route::get('/Customer',[customerController::class,'CustomerPage'])->middleware(tokenVerificationMiddleware::class);
