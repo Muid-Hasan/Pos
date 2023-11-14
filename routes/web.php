@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\dashController;
 use App\Http\Controllers\userController;
+use App\Http\Controllers\productController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\customerController;
 use App\Http\Middleware\tokenVerificationMiddleware;
@@ -49,6 +50,14 @@ Route::post('/customerCreate',[customerController::class,'CreateCustomer'])->mid
 Route::post('/customerUpdate',[customerController::class,'UpdateCustomer'])->middleware(tokenVerificationMiddleware::class);
 Route::post('/customerDelete',[customerController::class,'DeleteCustomer'])->middleware(tokenVerificationMiddleware::class);
 Route::post('customerById',[customerController::class,'CustomerById'])->middleware(tokenVerificationMiddleware::class);
+
+
+//Product back-end routes::
+Route::post('/ProductCreate',[productController::class,'ProductCreate'])->middleware(tokenVerificationMiddleware::class);
+Route::post('/ProductDelete',[productController::class,'ProductDelete'])->middleware(tokenVerificationMiddleware::class);
+Route::get('/ProductById',[productController::class,'ProductById'])->middleware(tokenVerificationMiddleware::class);
+Route::get('/ProductList',[productController::class,'ProductList'])->middleware(tokenVerificationMiddleware::class);
+Route::post('/ProductUpdate',[productController::class,'ProductUpdate'])->middleware(tokenVerificationMiddleware::class);
 
 
 
