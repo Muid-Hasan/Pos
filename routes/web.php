@@ -84,3 +84,8 @@ Route::get('/Categorypage',[categoryController::class,'CategoryPage'])->middlewa
 //Customer front-end routes::
 
 Route::get('/Customer',[customerController::class,'CustomerPage'])->middleware(tokenVerificationMiddleware::class);
+
+
+//Product front-end routes::
+
+Route::get('/Product',[productController::class,'ProductPage'])->middleware(tokenVerificationMiddleware::class);

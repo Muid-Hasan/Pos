@@ -32,7 +32,7 @@
 getList();
 
 async function getList(){
-    let res= await axios.get('categoryList');
+    let res= await axios.get('/categoryList');
 
     let tableList=$('#tableList');
     let tableData=$('#tableData');

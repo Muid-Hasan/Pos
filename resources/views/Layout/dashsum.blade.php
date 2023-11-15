@@ -35,7 +35,7 @@
                             <a class="nav-link" href="{{url('/Customer')}}">Customer</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Products</a>
+                            <a class="nav-link" href="{{url('/Product')}}">Products</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Sales</a>
