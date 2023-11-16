@@ -55,7 +55,7 @@ Route::post('customerById',[customerController::class,'CustomerById'])->middlewa
 //Product back-end routes::
 Route::post('/ProductCreate',[productController::class,'ProductCreate'])->middleware(tokenVerificationMiddleware::class);
 Route::post('/ProductDelete',[productController::class,'ProductDelete'])->middleware(tokenVerificationMiddleware::class);
-Route::get('/ProductById',[productController::class,'ProductById'])->middleware(tokenVerificationMiddleware::class);
+Route::post('/ProductById',[productController::class,'ProductById'])->middleware(tokenVerificationMiddleware::class);
 Route::get('/ProductList',[productController::class,'ProductList'])->middleware(tokenVerificationMiddleware::class);
 Route::post('/ProductUpdate',[productController::class,'ProductUpdate'])->middleware(tokenVerificationMiddleware::class);
 

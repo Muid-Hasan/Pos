@@ -64,7 +64,8 @@
         $('.editBtn').on('click',async function(){
           let id= $(this).data('id');
           let filePath=$(this).data('path');
-          await FillUpUpdateForm(id,filePath);
+          
+          await FillUpUpdateForm(id,filePath)
           $('#update-modal').modal('show');
          
         })
