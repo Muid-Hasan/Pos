@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\dashController;
 use App\Http\Controllers\userController;
+use App\Http\Controllers\invoiceController;
 use App\Http\Controllers\productController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\customerController;
@@ -59,8 +60,11 @@ Route::post('/ProductById',[productController::class,'ProductById'])->middleware
 Route::get('/ProductList',[productController::class,'ProductList'])->middleware(tokenVerificationMiddleware::class);
 Route::post('/ProductUpdate',[productController::class,'ProductUpdate'])->middleware(tokenVerificationMiddleware::class);
 
-
-
+//Invoice Back-end routes::
+Route::post('/invoiceCreate',[invoiceController::class,'invoiceCreate'])->middleware(tokenVerificationMiddleware::class);
+Route::post('/invoiceDelete',[invoiceController::class,'invoiceDelete'])->middleware(tokenVerificationMiddleware::class);
+Route::post('/invoiceDetails',[invoiceController::class,'invoiceDetails'])->middleware(tokenVerificationMiddleware::class);
+Route::get('/invoiceSelect',[invoiceController::class,'invoiceSelect'])->middleware(tokenVerificationMiddleware::class);
 
 
 //Front-End::
