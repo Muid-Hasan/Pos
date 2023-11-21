@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Exception;
 use App\Models\invoice;
+use App\Models\product;
 use App\Models\customer;
-use App\Models\InvoiceProduct;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 
+use App\Models\InvoiceProduct;
 use Illuminate\Support\Facades\DB;
 
 class invoiceController extends Controller
@@ -62,8 +64,11 @@ class invoiceController extends Controller
         $customerDetails= customer::where('user_id', $user_id)->where('id',$request->input('customer_id'))->first();
         $invoiceTotal=invoice::where('user_id', $user_id)->where('id',$request->input('invoice_id'))->first();
 
-        $invoiceProduct= InvoiceProduct::where('invoice_id',$request->input('invoice_id'))
-        ->where('user_id', $user_id)->get();
+        $invoiceProduct = InvoiceProduct::where('invoice_id', $request->input('invoice_id'))
+        ->where('user_id', $user_id)
+        ->with('product') // Assuming 'product' is the relationship name in InvoiceProduct model
+        ->get();
+    
 
         return array(
         'invoice'=> $invoiceTotal,
@@ -85,5 +90,13 @@ class invoiceController extends Controller
             DB::rollBack();
             return 0;
         }
+    }
+
+    function InvoicePage():View{
+        return view('pages.dashboard.invoice-page');
+    }
+
+    function SalePage():View{
+        return view('pages.dashboard.sale-page');
     }
 }

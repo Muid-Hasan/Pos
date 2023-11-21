@@ -38,7 +38,7 @@
                             <a class="nav-link" href="{{url('/Product')}}">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sales</a>
+                            <a class="nav-link" href="{{ url('/InvoicePage') }}">Invoice</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dashboardDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
