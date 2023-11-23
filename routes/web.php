@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\dashController;
 use App\Http\Controllers\userController;
+use App\Http\Controllers\reportController;
 use App\Http\Controllers\invoiceController;
 use App\Http\Controllers\productController;
 use App\Http\Controllers\categoryController;
@@ -32,6 +33,7 @@ Route::post('/resetPassword',[userController::class,'resetPassword'])->middlewar
 
 
 //Dashboard back-end routes::
+Route::get('/dashsum',[dashController::class,'Summary'])->middleware([tokenVerificationMiddleware::class]);
 Route::get('/logoutUser',[dashController::class,'LogoutUser']);
 Route::get('/userProfile',[dashController::class,'Userprofile'])->middleware(tokenVerificationMiddleware::class);  
 Route::post('/updateProfile',[dashController::class,'Updateprofile'])->middleware(tokenVerificationMiddleware::class); 
@@ -66,6 +68,8 @@ Route::post('/invoiceDelete',[invoiceController::class,'invoiceDelete'])->middle
 Route::post('/invoiceDetails',[invoiceController::class,'invoiceDetails'])->middleware(tokenVerificationMiddleware::class);
 Route::get('/invoiceSelect',[invoiceController::class,'invoiceSelect'])->middleware(tokenVerificationMiddleware::class);
 
+//Report Back-end routes::
+Route::get('/sales-report/{FormDate}/{ToDate}',[reportController::class,'SalesReport'])->middleware(tokenVerificationMiddleware::class);
 
 //Front-End::
 //Authentication front-end routes::
@@ -98,3 +102,7 @@ Route::get('/Product',[productController::class,'ProductPage'])->middleware(toke
 
 Route::get('/InvoicePage',[invoiceController::class,'InvoicePage'])->middleware(tokenVerificationMiddleware::class);
 Route::get('/SalePage',[invoiceController::class,'SalePage'])->middleware(tokenVerificationMiddleware::class);
+
+//Report Front-end routes::
+
+Route::get('/salereport',[reportController::class,'ReportPage'])->middleware(tokenVerificationMiddleware::class);
